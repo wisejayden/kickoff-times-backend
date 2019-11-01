@@ -4,9 +4,10 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var indexRouter = require("./routes/index");
+var getSeasonBySport = require("./routes/getSeasonBySport");
 var usersRouter = require("./routes/users");
 var testAPIRouter = require("./routes/testAPI");
+var doSomethingElse = require('./routes/doSomethingElse');
 var axios = require("axios");
 
 var app = express();
@@ -24,9 +25,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+app.use("/api/get-season-by-sport/:sport", getSeasonBySport);
 app.use("/users", usersRouter);
 app.use("/testAPI", testAPIRouter);
+app.use("/api/get-something-else", doSomethingElse);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

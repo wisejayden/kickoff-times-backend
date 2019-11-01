@@ -1,13 +1,16 @@
 let express = require("express");
 let router = express.Router();
 let axios = require("axios");
-/* GET home page. */
+/* GET Sport Leagues. */
 router.get("/", (req, res, next) => {
+  const sport = req.params.sport;
   axios
-    .get(req.app.get("api") + "/all_sports.php")
-    .then(res => {
-      console.log("HERE", res.data);
-      res.render("index", { title: res.data });
+    .get(`${req.app.get("api")}/search_all_leagues.php?s=${sport}`)
+    .then(data => {
+      res.json({
+        success: true,
+        data: data.data
+      })
     })
     .catch(err => {
       console.log(err);
