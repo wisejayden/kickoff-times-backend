@@ -2,7 +2,7 @@ let express = require("express");
 let router = express.Router();
 let axios = require("axios");
 /* GET Sport Leagues. */
-router.get("/", (req, res, next) => {
+router.get("/:sport", (req, res, next) => {
   const sport = req.params.sport;
   axios
     .get(`${req.app.get("api")}/search_all_leagues.php?s=${sport}`)
