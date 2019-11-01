@@ -5,10 +5,10 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var getTournamentsBySport = require("./routes/getTournamentsBySport");
+var getTournamentFixtures = require('./routes/getTournamentFixtures');
 var getSports = require('./routes/getSports');
 var usersRouter = require("./routes/users");
 var testAPIRouter = require("./routes/testAPI");
-var doSomethingElse = require('./routes/doSomethingElse');
 var axios = require("axios");
 
 var app = express();
@@ -27,9 +27,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/get-tournaments-by-sport", getTournamentsBySport);
+app.use("/api/get-tournament-fixtures", getTournamentFixtures);
 app.use("/users", usersRouter);
 app.use("/testAPI", testAPIRouter);
-app.use("/api/get-something-else", doSomethingElse);
 app.use('/api/get-sports', getSports);
 
 
