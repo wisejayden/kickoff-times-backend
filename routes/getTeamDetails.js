@@ -2,15 +2,15 @@ let express = require("express");
 let router = express.Router();
 let axios = require("axios");
 /* GET all sports. */
-router.get("/", (req, res, next) => {
-  console.log("hello?");
+router.get("/:id/:index", (req, res, next) => {
+  const {id, index} = req.params;
   axios
-    .get(`${req.app.get("api")}/all_sports.php`)
+    .get(`${req.app.get("api")}/lookupteam.php?id=${id}`)
     .then(data => {
-      console.log("data", data.data);
       res.json({
         success: true,
-        data: data.data
+        data: data.data,
+        index: index
       })
     })
     .catch(err => {

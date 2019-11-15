@@ -7,6 +7,9 @@ var logger = require("morgan");
 var getTournamentsBySport = require("./routes/getTournamentsBySport");
 var getTournamentFixtures = require('./routes/getTournamentFixtures');
 var getSports = require('./routes/getSports');
+var getSeasons = require('./routes/getSeasons');
+var getTeamDetails = require('./routes/getTeamDetails');
+
 var usersRouter = require("./routes/users");
 var testAPIRouter = require("./routes/testAPI");
 var axios = require("axios");
@@ -31,6 +34,9 @@ app.use("/api/get-tournament-fixtures", getTournamentFixtures);
 app.use("/users", usersRouter);
 app.use("/testAPI", testAPIRouter);
 app.use('/api/get-sports', getSports);
+app.use('/api/get-seasons', getSeasons);
+app.use('/api-get-team-details', getTeamDetails);
+
 
 
 
