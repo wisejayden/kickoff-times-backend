@@ -9,6 +9,7 @@ var getTournamentFixtures = require('./routes/getTournamentFixtures');
 var getSports = require('./routes/getSports');
 var getSeasons = require('./routes/getSeasons');
 var getTeamDetails = require('./routes/getTeamDetails');
+var getFixturesByDay = require('./routes/getFixturesByDay');
 
 var usersRouter = require("./routes/users");
 var testAPIRouter = require("./routes/testAPI");
@@ -36,6 +37,7 @@ app.use("/testAPI", testAPIRouter);
 app.use('/api/get-sports', getSports);
 app.use('/api/get-seasons', getSeasons);
 app.use('/api-get-team-details', getTeamDetails);
+app.use('/api/get-fixtures-by-day', getFixturesByDay);
 
 
 
